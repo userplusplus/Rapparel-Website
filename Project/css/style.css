@@ -5,6 +5,7 @@
 
 #navbar, footer {
     background-color: #353535;
+    color: ivory;
 }
 
 #content {
@@ -12,10 +13,17 @@
     margin: auto;
 }
 
+
+/* FOOTER */
 footer {
     min-height: 200px;
+    padding: 15px 5px;
+    text-align: center;
 }
 
+footer .row {
+    vertical-align: 50%;
+}
 
 /* NAVBAR */
 #navbar a {
