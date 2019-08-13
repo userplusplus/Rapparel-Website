@@ -3,12 +3,21 @@
     min-width: 300px;
 }
 
-
-/* NAVBAR */
-#navbar {
+#navbar, footer {
     background-color: #353535;
 }
 
+#content {
+    padding: 15px 5px;
+    margin: auto;
+}
+
+footer {
+    min-height: 200px;
+}
+
+
+/* NAVBAR */
 #navbar a {
     color: ivory;
 }
@@ -24,20 +33,30 @@
 
 
 /* CAROUSEL */
-#carousel * {
-    max-height: 70vh;
-}
-
 #carousel img {
     object-fit: cover;
-    width: 100%
+    width: 100%;
+    height: 70vh;
 }
+
+.carousel-indicators li {
+    height: 10px;
+}
+.carousel-indicators li:hover {
+    cursor: pointer;
+}
+
+.carousel-control-prev:hover , .carousel-control-next:hover {
+    transition: background .25s ease-in-out;
+    background: rgba(221, 221, 221, 0.2);
+}
+
 
 /* VIEWPORTS */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #navbar-logo {
-        left: 34vw;
+        left: 30%;
     }
 
     #cart-logo {
@@ -52,7 +71,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     #navbar-logo {
-        left: 38vw;
+        left: 38%;
     }
 
     #cart-logo {
@@ -67,7 +86,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     #navbar-logo {
-        left: 42vw;
+        left: 42%;
     }
 
     #cart-logo {
@@ -82,7 +101,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     #navbar-logo {
-        left: 42vw;
+        left: 42%;
     }
 
     #cart-logo {
@@ -97,7 +116,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     #navbar-logo {
-        left: 45vw;
+        left: 45%;
     }
 
     #cart-logo {
