@@ -3,6 +3,8 @@
     min-width: 300px;
 }
 
+
+/* NAVBAR */
 #navbar {
     background-color: #353535;
 }
@@ -20,6 +22,18 @@
     top: 10px;
 }
 
+
+/* CAROUSEL */
+#carousel * {
+    max-height: 70vh;
+}
+
+#carousel img {
+    object-fit: cover;
+    width: 100%
+}
+
+/* VIEWPORTS */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #navbar-logo {
