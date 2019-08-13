@@ -23,7 +23,15 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #navbar-logo {
-        left: 24vw;
+        left: 34vw;
+    }
+
+    #cart-logo {
+        display: none;
+    }
+
+    #cart-nav * {
+        display: block;
     }
 } 
 
@@ -32,12 +40,28 @@
     #navbar-logo {
         left: 38vw;
     }
+
+    #cart-logo {
+        display: none;
+    }
+
+    #cart-nav * {
+        display: block;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     #navbar-logo {
         left: 42vw;
+    }
+
+    #cart-logo {
+        display: none;
+    }
+
+    #cart-nav * {
+        display: block;
     }
 } 
 
@@ -46,11 +70,27 @@
     #navbar-logo {
         left: 42vw;
     }
+
+    #cart-logo {
+        display: block;
+    }
+
+    #cart-nav * {
+        display: none;
+    }
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     #navbar-logo {
         left: 45vw;
+    }
+
+    #cart-logo {
+        display: block;
+    }
+
+    #cart-nav * {
+        display: none;
     }
 }
