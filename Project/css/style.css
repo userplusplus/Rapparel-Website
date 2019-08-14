@@ -8,6 +8,15 @@
     color: ivory;
 }
 
+#navbar a, footer a {
+    color: ivory;
+}
+
+#navbar a:hover, footer a:hover {
+    color: rgb(206, 206, 194);
+    text-decoration: none;
+}
+
 #content {
     padding: 15px 5px;
     margin: auto;
@@ -26,14 +35,6 @@ footer .row {
 }
 
 /* NAVBAR */
-#navbar a {
-    color: ivory;
-}
-
-#navbar a:hover {
-    color: rgb(206, 206, 194);
-}
-
 #navbar-logo {
     position: absolute;
     top: 10px;
