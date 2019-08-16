@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>React App</title>
 
-    <!-- Bootstrap and its required libraries -->
+    <!-- Bootstrap 4 -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -35,9 +40,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
-
               <ul class="navbar-nav ml-auto">
-
                 <li class="nav-item active">
                   <a class="nav-link" href="Home.html">Home</a>
                 </li>
@@ -54,9 +57,7 @@
                 <li id="cart-nav" class="nav-item">
                     <a class="nav-link" href="Cart.html">Shopping Cart</a>
                 </li>
-
               </ul>
-
             </div>
 
           </div>
@@ -76,13 +77,15 @@
         <!-- The slideshow/carousel content -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="images/stars.jpg" alt="">
+            <img src="images/hilltop.jpg" alt="Seaside">
           </div>
+
            <div class="carousel-item">
-            <img src="images/cart.png" alt="">
+            <img src="images/seaside.jpg" alt="Sunset">
           </div>
+
           <div class="carousel-item">
-            <img src="images/logo.png" alt="">
+            <img src="images/sunset.jpg" alt="Hilltop">
           </div>
         </div>
         
@@ -90,6 +93,7 @@
         <a class="carousel-control-prev" href="#carousel" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
+
         <a class="carousel-control-next" href="#carousel" data-slide="next">
           <span class="carousel-control-next-icon"></span>
         </a>
@@ -99,10 +103,30 @@
 
       <!-- PAGE CONTENT -->
       <section id="content">
-        Hello! content here.
+        <div class="container-fluid">
+
+          <p>
+            <h2>Our most popular products!</h2>
+            <p>Grab your own before they go out of stock!</p>
+          </p>  
+
+          <!--
+          <div class="container product-card">
+            <div class="card img-fluid">
+              <img class="card-img-top" src="images/products/0/1.jpg" alt="Card image">
+              <div class="card-img-overlay">
+                <h3 class="card-title">Product</h3>
+                  <p class="card-text">The price</p>
+              </div>
+            </div>
+          </div>
+          -->
+
+        </div>
       </section>
 
 
+      <!-- FOOTER -->
       <footer>
         <div class="container-fluid">
           <div class="row">
@@ -126,9 +150,84 @@
     
     <!-- React goes here -->
     <script type="text/babel" >
-    "use strict";
+      "use strict";
+
+      //React product card
+      class Product extends React.Component {
+        constructor(props, context){
+          super(props, context);
+
+          this.handleClick = this.handleClick.bind(this)
+        }
+
+        //Redirect to appropriate page
+        handleClick() {
+          location.replace("product-pages/" + this.props.id + ".html")
+        }
+
+        render() {
+          return (
+            <div className="container product-card" onClick={this.handleClick}>
+              <div className="card img-fluid">
+                <img className="card-img-top" src={"images/products/" + this.props.id + "/1.jpg"} alt="Card image" />
+                <div className="card-img-overlay">
+                  <h3 className="card-title">{this.props.name}</h3>
+                  <p className="card-text">{ "$" + this.props.price}</p>
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+      }
+
+      //Host site for JSON data, if not working replace with data from data.json
+      const jsonURL = "https://api.myjson.com/bins/1dhkon";
+      var apiData = "";
+
+      //Fetches the JSON data from the API
+      fetch(jsonURL).then((response) => {
+        if (response.ok) {
+          console.log("JSON request successful")
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        //Because the JSON takes awhile to load, use it only in here where
+        //it is validated
+        apiData = responseJson
+        console.log("API data type: " + typeof apiData);
+        
+        var renderData = [];
+        
+        //Pull data from JSON 4 times
+        let i;
+        for(i=0; i < 4; i++) {
+          console.log("Rendering entries")
+
+          //push a new product to the array
+          renderData.push(React.createElement(Product, 
+            {
+              key: i,
+            }
+          ));  
+        }
 
 
+        //Render the react data
+        ReactDOM.render(
+          <div>
+            {renderData}
+          </div>,
+          document.querySelector("#content")
+        );
+
+      })
+      .catch((error) => {
+        console.log(error)
+      });
     </script>
   </body>
 </html>
