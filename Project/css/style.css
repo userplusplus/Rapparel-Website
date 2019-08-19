@@ -109,6 +109,12 @@ footer .row {
 .product-selectors {
     border-top: 2px solid rgb(53, 53, 53);
     padding: 15px 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+.product-selectors * {
+    margin-left: 5px;
 }
 
 .product-page #carousel{

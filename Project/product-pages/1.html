@@ -105,11 +105,29 @@
           super(props, context);
 
           this.handleClick = this.handleClick.bind(this)
+          this.checkStock = this.checkStock.bind(this)
         }
 
         //Redirect to appropriate page
         handleClick() {
           location.replace("product-pages/" + this.props.id + ".html")
+        }
+
+        checkStock(size){
+          let len = apiData.products[pID].stock.length;
+          let i;
+          
+
+          for (i=0; i < len; i++){
+
+          }
+
+
+          if( apiData.products[pID].stock.size > 0 ) {
+            return apiData.products[pID].stock.size
+          } else {
+            return apiData.products[pID].stock.size
+          }
         }
 
         render() {
@@ -148,9 +166,38 @@
 
 
               <div id="info" className="col-md-6">
-                <h1 id="product-name">{this.props.name}</h1>
+                <h1 className="product-name">{this.props.name}</h1>
 
-                <div>{this.props.description}</div>
+                <div className="product-price">
+                  {"$" + this.props.price}
+                </div>
+
+                <div className="product-description">
+                  {this.props.description}
+                </div>
+
+                <div className="product-selectors">
+                  <select id="product-size" title="Product size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+
+                  <select id="product-quantity" title="Product quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                  
+                  <button onClick={function(){alert('Sorry! Ferature not yet implemented.')}}>Add to cart</button>
+                </div>
+
               </div>
             </React.Fragment>
           );
