@@ -1,6 +1,11 @@
+body {
+    background-color: rgb(53, 53, 53);
+}
+
 #page {
     padding: 0px;
     min-width: 300px;
+    background-color: white;
 }
 
 #navbar, footer, .card-img-overlay {
