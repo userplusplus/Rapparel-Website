@@ -103,25 +103,13 @@
 
       <!-- PAGE CONTENT -->
       <section id="content">
-        <div class="container-fluid">
+        <p>
+          <h2>Our most popular products!</h2>
+          <p>Grab your own before they go out of stock!</p>
+        </p> 
 
-          <p>
-            <h2>Our most popular products!</h2>
-            <p>Grab your own before they go out of stock!</p>
-          </p>  
-
-          <!--
-          <div class="container product-card">
-            <div class="card img-fluid">
-              <img class="card-img-top" src="images/products/0/1.jpg" alt="Card image">
-              <div class="card-img-overlay">
-                <h3 class="card-title">Product</h3>
-                  <p class="card-text">The price</p>
-              </div>
-            </div>
-          </div>
-          -->
-
+        <!-- React gets rendered into here-->
+        <div id="target">
         </div>
       </section>
 
@@ -167,7 +155,7 @@
 
         render() {
           return (
-            <div className="container product-card" onClick={this.handleClick}>
+            <div className="col-lg-6 product-card" onClick={this.handleClick}>
               <div className="card img-fluid">
                 <img className="card-img-top" src={"images/products/" + this.props.id + "/1.jpg"} alt="Card image" />
                 <div className="card-img-overlay">
@@ -207,10 +195,13 @@
         for(i=0; i < 4; i++) {
           console.log("Rendering entries")
 
-          //push a new product to the array
+          //push a new product to the array using data from JSON
           renderData.push(React.createElement(Product, 
             {
               key: i,
+              id: apiData.products[i].id,
+              name: apiData.products[i].name,
+              price: apiData.products[i].price,
             }
           ));  
         }
@@ -218,10 +209,12 @@
 
         //Render the react data
         ReactDOM.render(
-          <div>
-            {renderData}
+          <div className="container-fluid">
+            <div className="row">
+              {renderData}
+            </div>
           </div>,
-          document.querySelector("#content")
+          document.querySelector("#target")
         );
 
       })

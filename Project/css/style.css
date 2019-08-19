@@ -63,7 +63,9 @@ footer .row {
 
 /* PRODUCT CARDS */
 .product-card {
-    min-width: 300px;
+    padding-top: 10px;
+    margin: auto;
+    width: 300px;
     max-width: 400px;
 }
 
