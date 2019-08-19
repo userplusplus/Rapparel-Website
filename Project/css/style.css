@@ -63,9 +63,8 @@ footer .row {
 
 /* PRODUCT CARDS */
 .product-card {
-    padding-top: 10px;
+    padding: 15px 0px 0px 0px;
     margin: auto;
-    width: 300px;
     max-width: 400px;
 }
 
@@ -85,8 +84,48 @@ footer .row {
 }
 
 
+/* PRODUCT Pages */
+.product-page{
+    margin: auto;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 5px 5px;
+    border-top: 2px solid rgb(53, 53, 53);
+}
+
+.product-description {
+    padding: 15px 0px;
+    border-top: 2px solid rgb(53, 53, 53);
+}
+
+.product-selectors {
+    border-top: 2px solid rgb(53, 53, 53);
+    padding: 15px 0px;
+}
+
+.product-page #carousel{
+    padding: 0px;
+}
+
+#info {
+    padding: 15px 30px;
+    width: 100%;
+}
+
+
 
 /* VIEWPORTS */
+/* Tiny devices (300px and down)*/
+@media only screen and (max-width: 370px) {
+    .card-img-overlay {
+        top: 67%;
+        height: 33%;
+    }
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #navbar-logo {
@@ -99,6 +138,14 @@ footer .row {
 
     #cart-nav * {
         display: block;
+    }
+
+    .product-page #carousel{
+        max-width: 100%;
+    }
+
+    .product-card {
+        min-width: 90%;
     }
 } 
 
@@ -115,6 +162,14 @@ footer .row {
     #cart-nav * {
         display: block;
     }
+
+    .product-page #carousel{
+        max-width: 100%;
+    }
+
+    .product-card {
+        min-width: 400px;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -129,6 +184,14 @@ footer .row {
 
     #cart-nav * {
         display: block;
+    }
+
+    .product-page #carousel{
+        max-width: 55%;
+    }
+
+    .product-card {
+        min-width: 400px;
     }
 } 
 
@@ -145,6 +208,14 @@ footer .row {
     #cart-nav * {
         display: none;
     }
+
+    .product-page #carousel{
+        max-width: 45%;
+    }
+
+    .product-card {
+        min-width: 300px;
+    }
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -159,5 +230,17 @@ footer .row {
 
     #cart-nav * {
         display: none;
+    }
+
+    .product-page{
+        width: 70%;
+    }
+
+    .product-page #carousel{
+        max-width: 50%;
+    }
+
+    .product-card {
+        min-width: 300px;
     }
 }

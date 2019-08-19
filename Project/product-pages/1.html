@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+
+    <!-- Bootstrap 4 -->
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+
+    <div id="page" class="container-fluid">
+      
+      <!-- NAV -->
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+          <div class="container">
+
+            <!-- Hidden on small devices -->
+            <a id="cart-logo" class="nav-link" href="../Cart.html">
+              <img src="../images/cart.png" alt="Cart logo"/>
+            </a>
+            
+            <a id="navbar-logo" class="" href="../Home.html">
+              <img src="../images/logo.png" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="../Home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="../Shop.html">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="../Contact-Us.html">Contact Us</a>
+                </li>
+
+                <!-- Hidden on desktop, shows on small devices -->
+                <li id="cart-nav" class="nav-item">
+                    <a class="nav-link" href="../Cart.html">Shopping Cart</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+
+      <!-- PAGE CONTENT -->
+      <section class="product-page container-fluid">
+
+        <!-- React gets rendered into here-->
+        <div id="target" class="row">
+        </div>
+
+      </section>
+
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-lg-4">
+              <a href="../Thank-You.html">Thank You Form</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="../Ts&Cs.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="../Contact-Us.html">Designed and created: 2019</a>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- React goes here -->
+    <script type="text/babel" >
+      "use strict";
+
+      //The whole product page
+      class ProductPage extends React.Component {
+        constructor(props, context){
+          super(props, context);
+
+          this.handleClick = this.handleClick.bind(this)
+        }
+
+        //Redirect to appropriate page
+        handleClick() {
+          location.replace("product-pages/" + this.props.id + ".html")
+        }
+
+        render() {
+          return (
+            <React.Fragment>
+              <div id="carousel" className="carousel slide col-md-6" data-ride="carousel">
+                <ul className="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" className="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ul>
+                
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img src={"../images/products/" + this.props.id + "/1.jpg"} alt="Product Image 1" />
+                  </div>
+
+                  <div className="carousel-item">
+                    <img src={"../images/products/" + this.props.id + "/2.jpg"} alt="Product Image 2" />
+                  </div>
+
+                  <div className="carousel-item">
+                    <img src={"../images/products/" + this.props.id + "/3.jpg"} alt="Product Image 3" />
+                  </div>
+                </div>
+                
+                <a className="carousel-control-prev" href="#carousel" data-slide="prev">
+                  <span className="carousel-control-prev-icon"></span>
+                </a>
+
+                <a className="carousel-control-next" href="#carousel" data-slide="next">
+                  <span className="carousel-control-next-icon"></span>
+                </a>
+
+              </div>
+
+
+              <div id="info" className="col-md-6">
+                <h1 id="product-name">{this.props.name}</h1>
+
+                <div>{this.props.description}</div>
+              </div>
+            </React.Fragment>
+          );
+        }
+
+      }
+
+      //Host site for JSON data, if not working replace with data from data.json
+      const jsonURL = "https://api.myjson.com/bins/1dhkon";
+      var apiData = "";
+
+      //The chosen product ID
+      const pID = 1;
+
+      //Fetches the JSON data from the API
+      fetch(jsonURL).then((response) => {
+        if (response.ok) {
+          console.log("JSON request successful")
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        }
+      })
+      .then((responseJson) => {
+        //Because the JSON takes awhile to load, use it only in here where
+        //it is validated
+        apiData = responseJson
+        console.log("API data type: " + typeof apiData);
+        
+        var renderData = [];
+        
+        console.log("Rendering entries")
+
+        //push a new product to the array using data from JSON
+        renderData.push(React.createElement(ProductPage, 
+          {
+            key: pID,
+            id: apiData.products[pID].id,
+            name: apiData.products[pID].name,
+            price: apiData.products[pID].price,
+            description: apiData.products[pID].description,
+          }
+        ));
+
+
+      //Render the react data
+      ReactDOM.render(
+        <React.Fragment>
+          {renderData}
+        </React.Fragment>,
+        document.querySelector("#target")
+      );
+
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+    </script>
+  </body>
+</html>

@@ -103,10 +103,10 @@
 
       <!-- PAGE CONTENT -->
       <section id="content">
-        <p>
+        <div class="container">
           <h2>Our most popular products!</h2>
           <p>Grab your own before they go out of stock!</p>
-        </p> 
+        </div> 
 
         <!-- React gets rendered into here-->
         <div id="target">
@@ -155,7 +155,7 @@
 
         render() {
           return (
-            <div className="col-lg-6 product-card" onClick={this.handleClick}>
+            <div className="col-sm-4 product-card" onClick={this.handleClick}>
               <div className="card img-fluid">
                 <img className="card-img-top" src={"images/products/" + this.props.id + "/1.jpg"} alt="Card image" />
                 <div className="card-img-overlay">
