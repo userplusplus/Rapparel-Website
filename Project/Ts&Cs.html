@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+
+    <!-- Bootstrap 4 -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div id="page" class="container-fluid">
+      
+      <!-- NAV -->
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+          <div class="container">
+
+            <!-- Hidden on small devices -->
+            <a id="cart-logo" class="nav-link" href="Cart.html">
+              <img src="images/cart.png" alt="Cart logo"/>
+            </a>
+            
+            <a id="navbar-logo" class="" href="Home.html">
+              <img src="images/logo.png" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="Home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="Shop.html">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="Contact-Us.html">Contact Us</a>
+                </li>
+
+                <!-- Hidden on desktop, shows on small devices -->
+                <li id="cart-nav" class="nav-item">
+                    <a class="nav-link" href="Cart.html">Shopping Cart</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+
+
+      <!-- CAROUSEL -->
+      <section id="carousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Carousel bottom buttons -->
+        <ul class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow/carousel content -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/hilltop.jpg" alt="Seaside">
+          </div>
+
+           <div class="carousel-item">
+            <img src="images/seaside.jpg" alt="Sunset">
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/sunset.jpg" alt="Hilltop">
+          </div>
+        </div>
+        
+        <!-- Left and right buttons -->
+        <a class="carousel-control-prev" href="#carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#carousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+      </section>
+
+
+      <!-- PAGE CONTENT -->
+      <section id="content" class="container">
+          <h1>Terms and Conditions ("Terms")</h1>
+
+          <p>
+
+                Last updated: (add date)
+                
+                Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the http://www.mywebsite.com (change this) website and the My Mobile App (change this) mobile application (the "Service") operated by My Company (change this) ("us", "we", or "our").
+                
+                Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+                
+                By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.
+                
+                Purchases
+                
+                If you wish to purchase any product or service made available through the Service ("Purchase"), you may be asked to supply certain information relevant to your Purchase including, without limitation, your …
+                
+                The Purchases section is for businesses that sell online (physical or digital). For the full disclosure section, create your own Terms and Conditions.
+                
+                Subscriptions
+                
+                Some parts of the Service are billed on a subscription basis ("Subscription(s)"). You will be billed in advance on a recurring ...
+                
+                The Subscriptions section is for SaaS businesses. For the full disclosure section, create your own Terms and Conditions.
+                
+                Content
+                
+                Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the …
+                
+                The Content section is for businesses that allow users to create, edit, share, make content on their websites or apps. For the full disclosure section, create your own Terms and Conditions.
+                
+                
+                
+                Links To Other Web Sites
+                
+                Our Service may contain links to third-party web sites or services that are not owned or controlled by My Company (change this).
+                
+                My Company (change this) has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that My Company (change this) shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+                
+                Changes
+                
+                We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 (change this) days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+                
+                Contact Us
+                
+                If you have any questions about these Terms, please contact us.
+          </p>
+      </section>
+
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-lg-4">
+              <a href="Thank-You.html">Thank You Form</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="Ts&Cs.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="Contact-Us.html">Designed and created: 2019</a>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- React goes here -->
+    <script type="text/babel" >
+      "use strict";
+    </script>
+  </body>
+</html>

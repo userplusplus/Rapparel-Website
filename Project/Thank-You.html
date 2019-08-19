@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+
+    <!-- Bootstrap 4 -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div id="page" class="container-fluid">
+      
+      <!-- NAV -->
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+          <div class="container">
+
+            <!-- Hidden on small devices -->
+            <a id="cart-logo" class="nav-link" href="Cart.html">
+              <img src="images/cart.png" alt="Cart logo"/>
+            </a>
+            
+            <a id="navbar-logo" class="" href="Home.html">
+              <img src="images/logo.png" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="Home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="Shop.html">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="Contact-Us.html">Contact Us</a>
+                </li>
+
+                <!-- Hidden on desktop, shows on small devices -->
+                <li id="cart-nav" class="nav-item">
+                    <a class="nav-link" href="Cart.html">Shopping Cart</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+
+
+      <!-- CAROUSEL -->
+      <section id="carousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Carousel bottom buttons -->
+        <ul class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow/carousel content -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/hilltop.jpg" alt="Seaside">
+          </div>
+
+           <div class="carousel-item">
+            <img src="images/seaside.jpg" alt="Sunset">
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/sunset.jpg" alt="Hilltop">
+          </div>
+        </div>
+        
+        <!-- Left and right buttons -->
+        <a class="carousel-control-prev" href="#carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#carousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+      </section>
+
+
+      <!-- PAGE CONTENT -->
+      <section id="content">
+        <div class="container">
+          
+        </div> 
+      </section>
+
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-lg-4">
+              <a href="Thank-You.html">Thank You Form</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="Ts&Cs.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="Contact-Us.html">Designed and created: 2019</a>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- React goes here -->
+    <script type="text/babel" >
+    </script>
+  </body>
+</html>
