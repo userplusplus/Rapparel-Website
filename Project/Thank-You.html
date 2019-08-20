@@ -103,8 +103,19 @@
 
       <!-- PAGE CONTENT -->
       <section id="content">
-        <div class="container">
-          
+        <div class="container d-block">
+          <h1>Please fill out our form so we can thank you!</h1>
+          <form>
+            First Name: <br />
+            <input type="text" name="f-name" required> <br />
+
+            Last Name: <br />
+            <input type="text" name="l-name" required> <br />
+
+            Email Address: <br />
+            <input type="email" name="email" required> <br /> <br />
+            <input type="submit" value="Submit">
+          </form>
         </div> 
       </section>
 
@@ -133,6 +144,14 @@
     
     <!-- React goes here -->
     <script type="text/babel" >
+      function checkInput () {
+        var getInput = id => return getElementById(id).value;
+
+
+      }
+
+      document.getElementById("submit").addEventListener("click", checkInput);
+
     </script>
   </body>
 </html>
