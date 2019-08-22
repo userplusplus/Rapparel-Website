@@ -31,7 +31,7 @@
               <img src="images/cart.png" alt="Cart logo"/>
             </a>
             
-            <a id="navbar-logo" class="" href="Home.html">
+            <a id="navbar-logo" class="" href="Index.html">
               <img src="images/logo.png" alt="">
             </a>
 
@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Home.html">Home</a>
+                  <a class="nav-link" href="Index.html">Home</a>
                 </li>
 
                 <li class="nav-item">
@@ -64,60 +64,23 @@
         </nav>
 
 
-      <!-- CAROUSEL -->
-      <section id="carousel" class="carousel slide" data-ride="carousel">
-
-        <!-- Carousel bottom buttons -->
-        <ul class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-        </ul>
-        
-        <!-- The slideshow/carousel content -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="images/hilltop.jpg" alt="Seaside">
-          </div>
-
-           <div class="carousel-item">
-            <img src="images/seaside.jpg" alt="Sunset">
-          </div>
-
-          <div class="carousel-item">
-            <img src="images/sunset.jpg" alt="Hilltop">
-          </div>
-        </div>
-        
-        <!-- Left and right buttons -->
-        <a class="carousel-control-prev" href="#carousel" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#carousel" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-
-      </section>
-
-
       <!-- PAGE CONTENT -->
       <section id="content">
-        <div class="container d-block">
-          <h1>Please fill out our form so we can thank you!</h1>
-          <form>
-            First Name: <br />
-            <input type="text" name="f-name" required> <br />
-
-            Last Name: <br />
-            <input type="text" name="l-name" required> <br />
-
-            Email Address: <br />
-            <input type="email" name="email" required> <br /> <br />
-            <input type="submit" value="Submit">
-          </form>
-        </div> 
-      </section>
+          <div class="container d-block">
+            <h1>Please fill out our form so we can thank you!</h1>
+            <form name="myForm" autocomplete="off" action="Thank-You-2.html">
+              First Name: <br />
+              <input type="text" name="fname" required> <br />
+  
+              Last Name: <br />
+              <input type="text" name="lname" required> <br />
+  
+              Email Address: <br />
+              <input type="email" name="emailAdd" required> <br /> <br />
+              <button name="submit">Submit</button>
+            </form>
+          </div> 
+        </section>
 
 
       <!-- FOOTER -->
@@ -144,13 +107,94 @@
     
     <!-- React goes here -->
     <script type="text/babel" >
-      function checkInput () {
-        var getInput = id => return getElementById(id).value;
+      /*
+       (\w{1,20})(\@{1})(\w{1,20})(\.)(\w{1,20})(\.?)(\w{1,20})?(\.?)(\w{1,20})?
+       Isn't that an eyesore? Let's break this regex down.
+      
+       (\w{1,10})
+       () capture group, just a way of grouping, i find it easier to read
+       the regex by using these, so i did. Not actually sure of usecase though.
+       \w refers to word, any alphanumeric character or underscore
+       {1,10} refers to how many in a row there can be ( in this case
+       there can be between 1 and 10 alphanumeric characters)
+      
+       (\@{1})
+       \@ defines the character im searching for '@'
+       {1} means to only look for an instance where there is
+       one, and only one, of the previous character (in this case, '@') 
+      
+       (\.)
+       \. the backslash just lets javascript know that you're after
+       the character rather than trying to call a method etc (this is
+       called escaping a character)
+      
+       (\.?)
+       ? in this case, there is a questionmark, it's is all about the 
+       character '.' but in this case it's an optional thing. I did this
+       because sometimes an email goes like:
+      
+          blah@blah.blah.blah OR hmm@hmm.hmm
+      
+       the first grouping doesnt have a ? as i want there to be at least
+       one '.' required in an email.
+      
+       Sorry for all the comments, its more for my own reference than
+       anything else.
 
+       this website helped me test and build it a lot quicker than i would've
+       normally: https://regexr.com , see it's cheatsheat for a breakdown of
+       all of the regex operators that i used.
 
+       Note: this will cover most email addresses but there are some outliers
+       e.g email addresses with '-' in them...
+      */
+      const validEmail = string => /(\w{1,20})(\@{1})(\w{1,20})(\.)(\w{1,20})(\.?)(\w{1,20})?(\.?)(\w{1,20})?/.test(string);
+
+      const formGet = (name) => document.forms["myForm"][name];
+
+      //checks value for numbers [0-9] using a regex
+      //returns true if there are numbers
+      const hasNum = string => /\d/.test(string);
+
+      function quickTest (){
+        console.log("fname contains numbers? \n(desired: false)\n response: " + hasNum(formGet("fname").value))
+        console.log("lname contains numbers? \n(desired: false)\n response: " + hasNum(formGet("lname").value))
+        console.log("Email matches regex? \n(desired: true)\n response: " + validEmail(formGet("emailAdd").value))
       }
 
-      document.getElementById("submit").addEventListener("click", checkInput);
+      function checkInput () {
+        //clear custom errors
+        formGet("fname").setCustomValidity("");
+        formGet("lname").setCustomValidity("");
+        formGet("emailAdd").setCustomValidity("");
+
+        //First check that none are empty
+        if (formGet("fname").value != "" &&
+        formGet("lname").value != "" &&
+        formGet("emailAdd").value != "") {
+
+          if ( hasNum( formGet("fname").value ) ) {//if first name has numbers
+            console.log("Numbers in fname!")
+            formGet("fname").setCustomValidity("No numbers please!");
+            return false
+          } else if ( hasNum( formGet("lname").value ) ) {//if last name has numbers
+            console.log("Numbers in lname!")
+            formGet("lname").setCustomValidity("No numbers please!");
+            return false
+          } else if ( validEmail( formGet("emailAdd").value != true ) ) {//see regex breakdown for more detail
+            console.log("Invalid email!")
+            formGet("emailAdd").setCustomValidity("Please enter a valid email address!");
+            return false
+          }  else {
+            console.log("Valid!")
+            return true
+          }
+        } else {
+          return false
+        }
+      }
+
+      formGet("submit").addEventListener("click", checkInput);
 
     </script>
   </body>
