@@ -181,7 +181,7 @@
             console.log("Numbers in lname!")
             formGet("lname").setCustomValidity("No numbers please!");
             return false
-          } else if ( validEmail( formGet("emailAdd").value != true ) ) {//see regex breakdown for more detail
+          } else if ( validEmail( formGet("emailAdd").value ) == false  ) {//see regex breakdown for more detail
             console.log("Invalid email!")
             formGet("emailAdd").setCustomValidity("Please enter a valid email address!");
             return false
